@@ -51,7 +51,8 @@ defmodule Conduit.MixProject do
       {:absinthe_plug, "~> 1.4.6"},
       {:absinthe_phoenix, "~> 1.4.3"},
       {:commanded, "~> 0.15"},
-      {:commanded_eventstore_adapter, "~> 0.3"}
+      {:commanded_eventstore_adapter, "~> 0.3"},
+      {:ex_machina, "~> 2.0", only: :test}
     ]
   end
 

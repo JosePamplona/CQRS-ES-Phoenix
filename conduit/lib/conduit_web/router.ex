@@ -17,7 +17,12 @@ defmodule ConduitWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    post "/users", UserController, :create
+  end
+
+  scope "/users", ConduitWeb do
+    pipe_through :api
+
+    post "/", UserController, :create
   end
 
   # Other scopes may use custom stacks.
