@@ -52,9 +52,10 @@ defmodule Conduit.MixProject do
       {:absinthe_phoenix, "~> 1.4.3"},
       {:commanded, "~> 0.15"},
       {:commanded_eventstore_adapter, "~> 0.3"},
-      {:ex_machina, "~> 2.0", only: :test},
+      {:ex_machina, "~> 2.1", only: :test},
       {:exconstructor, "~> 1.1"},
-      {:elixir_uuid, "~> 1.2"}
+      {:elixir_uuid, "~> 1.2"},
+      {:mix_test_watch, "~> 0.5", only: :dev, runtime: false}
     ]
   end
 
