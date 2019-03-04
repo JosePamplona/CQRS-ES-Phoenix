@@ -20,7 +20,10 @@ defmodule Conduit.MixProject do
   def application do
     [
       mod: {Conduit.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [
+        :logger, 
+        :runtime_tools
+      ]
     ]
   end
 
@@ -34,7 +37,6 @@ defmodule Conduit.MixProject do
   defp deps do
     [
       {:phoenix, "~> 1.4.1"},
-      {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
