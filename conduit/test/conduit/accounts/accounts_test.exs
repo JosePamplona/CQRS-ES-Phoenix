@@ -4,7 +4,7 @@ defmodule Conduit.AccountsTest do
   alias Conduit.Accounts
 
   describe "users" do
-    alias Conduit.Accounts.User
+    alias Conduit.Accounts.Projections.User
 
     @valid_attrs %{bio: "some bio", email: "some email", image: "some image", pass_hash: "some pass_hash", username: "some username"}
     @update_attrs %{bio: "some updated bio", email: "some updated email", image: "some updated image", pass_hash: "some updated pass_hash", username: "some updated username"}
