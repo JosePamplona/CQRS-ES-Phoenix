@@ -22,7 +22,8 @@ defmodule Conduit.MixProject do
       mod: {Conduit.Application, []},
       extra_applications: [
         :logger, 
-        :runtime_tools
+        :runtime_tools,
+        :eventstore
       ]
     ]
   end
@@ -48,7 +49,9 @@ defmodule Conduit.MixProject do
       {:absinthe, "~> 1.4.13"},
       {:absinthe_ecto, "~> 0.1.3"},
       {:absinthe_plug, "~> 1.4.6"},
-      {:absinthe_phoenix, "~> 1.4.3"}
+      {:absinthe_phoenix, "~> 1.4.3"},
+      {:commanded, "~> 0.15"},
+      {:commanded_eventstore_adapter, "~> 0.3"}
     ]
   end
 
@@ -60,6 +63,8 @@ defmodule Conduit.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
+      "event_store.steup": ["event_store.create", "event_store.init"],
+      "event_store.reset": ["event_store.drop", "event_store.create", "event_store.init"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"]

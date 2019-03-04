@@ -9,10 +9,21 @@ config :conduit, ConduitWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-# Configure your database
+# Configure the event read database
 config :conduit, Conduit.Repo,
   username: "postgres",
-  password: "postgres",
-  database: "conduit_test",
+  password: "pass",
+  database: "conduit_readstore_test",
   hostname: "localhost",
+  port: "5432",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# Configure the event store database
+config :eventstore, EventStore.Storage,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: "postgres",
+  password: "pass",
+  database: "conduit_eventstore_test",
+  hostname: "localhost",
+  port: "5432",
+  pool_size: 10

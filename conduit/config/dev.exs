@@ -67,11 +67,21 @@ config :phoenix, :stacktrace_depth, 20
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
 
-# Configure your database
+# Configure the event read database
 config :conduit, Conduit.Repo,
   username: "postgres",
   password: "pass",
-  database: "conduit_dev",
+  database: "conduit_readstore_dev",
+  hostname: "localhost",
+  port: "5432",
+  pool_size: 10
+
+# Configure the event store database
+config :eventstore, EventStore.Storage,
+  serializer: Commanded.Serialization.JsonSerializer,
+  username: "postgres",
+  password: "pass",
+  database: "conduit_eventstore_dev",
   hostname: "localhost",
   port: "5432",
   pool_size: 10
