@@ -1,11 +1,11 @@
 defmodule Conduit.Accounts.Commands.RegisterUser do
   defstruct [
-    :uuid,
+    :user_uuid,
     :username,
     :email,
-    :pass,
-    :pass_hash,
+    :password,
+    :pass_hash
   ]
-  
+
   use ExConstructor
 end
