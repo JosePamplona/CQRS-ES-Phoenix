@@ -10,7 +10,7 @@ defmodule Conduit.Accounts.Commands.RegisterUser do
   use Vex.Struct
 
   validates :uuid, uuid: true
-  validates :username, presence: true, string: true
-  validates :email, presence: true, string: true
-  validates :pass_hash, presence: true, string: true
+  validates :username, presence: [message: "can't be empty"], string: true, unique_username: true
+  validates :email, presence: [message: "can't be empty"], string: true
+  validates :pass_hash, presence: [message: "can't be empty"], string: true
 end
