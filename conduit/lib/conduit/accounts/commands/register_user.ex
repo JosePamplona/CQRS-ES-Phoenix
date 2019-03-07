@@ -1,6 +1,6 @@
 defmodule Conduit.Accounts.Commands.RegisterUser do
   defstruct [
-    :user_uuid,
+    :uuid,
     :username,
     :email,
     :password,

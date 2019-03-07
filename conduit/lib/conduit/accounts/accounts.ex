@@ -11,7 +11,7 @@ defmodule Conduit.Accounts do
   """
   def register_user(attrs \\ %{}) do
     attrs
-    |> assign_uuid(:user_uuid)
+    |> assign_uuid(:uuid)
     |> RegisterUser.new()
     |> Router.dispatch()
   end

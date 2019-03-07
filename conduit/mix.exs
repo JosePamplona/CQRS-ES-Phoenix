@@ -52,6 +52,7 @@ defmodule Conduit.MixProject do
       {:absinthe_phoenix, "~> 1.4.3"},
       {:commanded, "~> 0.15"},
       {:commanded_eventstore_adapter, "~> 0.3"},
+      {:commanded_ecto_projections, "~> 0.6"},
       {:ex_machina, "~> 2.1", only: :test},
       {:exconstructor, "~> 1.1"},
       {:elixir_uuid, "~> 1.2"},
@@ -67,8 +68,8 @@ defmodule Conduit.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      "event_store.steup": ["event_store.create", "event_store.init"],
-      "event_store.reset": ["event_store.drop", "event_store.create", "event_store.init"],
+      "event_store.setup": ["event_store.create", "event_store.migrate", "event_store.init"],
+      "event_store.reset": ["event_store.drop", "event_store.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"]
