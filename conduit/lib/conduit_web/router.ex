@@ -11,6 +11,8 @@ defmodule ConduitWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug Guardian.Plug.VerifyHeader, realm: "Token"
+    plug Guardian.Plug.LoadResource
   end
 
   scope "/", ConduitWeb do
@@ -22,6 +24,7 @@ defmodule ConduitWeb.Router do
   scope "/users", ConduitWeb do
     pipe_through :api
 
+    post "/login", SessionController, :create
     post "/", UserController, :create
   end
 

@@ -31,6 +31,16 @@ config :commanded,
 config :commanded_ecto_projections, 
   repo: Conduit.Repo
 
+config :guardian, Guardian,
+  allowed_algos: ["HS512"],
+  verify_module: Guardian.JWT,
+  issuer: "Conduit",
+  ttl: {30, :days},
+  allowed_drift: 2000,
+  verify_issuer: true,
+  secret_key: "bF+sUIJQbYktyyDUU02ilPwLmreKkNWy3yj5VBwfKFxUDrotEOm0arMxx0sL+DKX",
+  serializer: Conduit.Auth.GuardianSerializer
+
 config :vex,
   sources: [
     Conduit.Accounts.Validators,
