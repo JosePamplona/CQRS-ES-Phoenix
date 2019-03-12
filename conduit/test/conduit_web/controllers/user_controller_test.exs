@@ -1,8 +1,6 @@
 defmodule ConduitWeb.UserControllerTest do
   use ConduitWeb.ConnCase
 
-  import Conduit.Factory
-
   alias Conduit.Accounts
 
   def fixture(:user, attrs \\ []) do
@@ -31,8 +29,9 @@ defmodule ConduitWeb.UserControllerTest do
     test "should not create user and render errors when data is invalid", %{conn: conn} do
       conn = post conn, Routes.user_path(conn, :create), user: build(:user, username: "")
       assert json_response(conn, 422)["errors"] == %{
-        "username" => ["can't be blank"],
-        "pass_hash" => ["can't be blank"]
+        "username" => [
+          "can't be empty"
+        ]
       }
     end
 
@@ -49,5 +48,6 @@ defmodule ConduitWeb.UserControllerTest do
         ]
       }
     end
+
   end
 end
