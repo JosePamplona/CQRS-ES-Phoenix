@@ -9,6 +9,8 @@ config :conduit, ConduitWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+config :comeonin, :bcrypt_log_rounds, 4
+
 # Configure the event read database
 config :conduit, Conduit.Repo,
   username: "postgres",

@@ -1,10 +1,12 @@
 defmodule Conduit.Accounts.Commands.RegisterUser do
   alias Conduit.Accounts.Commands.RegisterUser
+  alias Conduit.Auth
 
   defstruct [
     uuid: "",
     username: "",
     email: "",
+    pass: "",
     pass_hash: ""
   ]
 
@@ -55,6 +57,16 @@ defmodule Conduit.Accounts.Commands.RegisterUser do
   """
   def downcase_email(%RegisterUser{email: email} = register_user) do
     %RegisterUser{register_user | email: String.downcase(email)}
+  end
+
+  @doc """
+  Hash the password, clear the original password
+  """
+  def hash_pass(%RegisterUser{pass: pass} = register_user) do
+    %RegisterUser{register_user |
+      pass: nil,
+      pass_hash: Auth.hash_password(pass)
+    }
   end
 end
 
