@@ -13,7 +13,7 @@ defmodule Conduit.Accounts.Aggregates.UserTest do
           uuid: uuid,
           email: "jake@jake.jake",
           username: "jake",
-          pass_hash: "jakejake"
+          pass_hash: ""
         }
       ]
     end
