@@ -15,17 +15,18 @@ defmodule ConduitWeb.Router do
     plug Guardian.Plug.LoadResource
   end
 
+  scope "/api", ConduitWeb do
+    pipe_through :api
+
+    get "/user", UserController, :current
+    post "/users/login", SessionController, :create
+    post "/users", UserController, :create
+  end
+
   scope "/", ConduitWeb do
     pipe_through :browser
 
     get "/", PageController, :index
-  end
-
-  scope "/users", ConduitWeb do
-    pipe_through :api
-
-    post "/login", SessionController, :create
-    post "/", UserController, :create
   end
 
   # Other scopes may use custom stacks.

@@ -19,16 +19,12 @@ defmodule ConduitWeb.ConnCase do
     quote do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
-      alias Conduit.Accounts
-      alias ConduitWeb.Router.Helpers, as: Routes
       import Conduit.Factory
+      import Conduit.Fixture
+      alias ConduitWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
       @endpoint ConduitWeb.Endpoint
-
-      def fixture(:user, attrs \\ []) do
-        build(:user, attrs) |> Accounts.register_user()
-      end
     end
   end
 
