@@ -69,19 +69,23 @@ config :logger, level: :info
 # Finally import the config/prod.secret.exs which should be versioned
 # separately.
 
-# Configure the event read database
-config :conduit, Conduit.Repo,
-  username: "postgres",
-  password: "pass",
-  database: "conduit_readstore_prod",
-  pool_size: 10
-
 # Configure the event store database
 config :eventstore, EventStore.Storage,
   serializer: Commanded.Serialization.JsonSerializer,
   username: "postgres",
   password: "pass",
   database: "conduit_eventstore_prod",
+  hostname: "localhost",
+  port: "5432",
   pool_size: 10
+
+# Configure the event read database
+config :conduit, Conduit.Repo,
+  username: "postgres",
+  password: "pass",
+  database: "conduit_readstore_prod",
+  hostname: "localhost",
+  port: "5432",
+  pool_size: 15
   
 import_config "prod.secret.exs"

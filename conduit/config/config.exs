@@ -31,6 +31,13 @@ config :commanded,
 config :commanded_ecto_projections, 
   repo: Conduit.Repo
 
+config :vex,
+  sources: [
+    Conduit.Accounts.Validators,
+    Conduit.Support.Validators,
+    Vex.Validators
+  ]
+
 config :guardian, Guardian,
   allowed_algos: ["HS512"],
   verify_module: Guardian.JWT,
@@ -40,13 +47,6 @@ config :guardian, Guardian,
   verify_issuer: true,
   secret_key: "bF+sUIJQbYktyyDUU02ilPwLmreKkNWy3yj5VBwfKFxUDrotEOm0arMxx0sL+DKX",
   serializer: Conduit.Auth.GuardianSerializer
-
-config :vex,
-  sources: [
-    Conduit.Accounts.Validators,
-    Conduit.Support.Validators,
-    Vex.Validators
-  ]
   
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

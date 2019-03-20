@@ -1,4 +1,4 @@
-defmodule Conduit.Repo.Migrations.CreateBlogArticles do
+defmodule Conduit.Repo.Migrations.CreateConduit.Blog.Article do
   use Ecto.Migration
 
   def change do

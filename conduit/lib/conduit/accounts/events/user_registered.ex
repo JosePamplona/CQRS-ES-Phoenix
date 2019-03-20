@@ -1,9 +1,10 @@
 defmodule Conduit.Accounts.Events.UserRegistered do
   @derive Jason.Encoder
+  
   defstruct [
-    :uuid,
+    :user_uuid,
     :username,
     :email,
-    :pass_hash
+    :hashed_password
   ]
 end

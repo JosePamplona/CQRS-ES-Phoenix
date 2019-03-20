@@ -3,11 +3,11 @@ defmodule Conduit.Accounts.Commands.RegisterUser do
   alias Conduit.Auth
 
   defstruct [
-    uuid: "",
+    user_uuid: "",
     username: "",
     email: "",
-    pass: "",
-    pass_hash: ""
+    password: "",
+    hashed_password: ""
   ]
 
   # The convention rule specifies that the 'use' directive must be before the
@@ -15,7 +15,9 @@ defmodule Conduit.Accounts.Commands.RegisterUser do
   use ExConstructor
   use Vex.Struct
 
-  validates :uuid, uuid: true
+  validates :user_uuid, 
+    uuid: true
+
   validates :username, 
     presence: [message: "can't be empty"], 
     format: [
@@ -26,6 +28,7 @@ defmodule Conduit.Accounts.Commands.RegisterUser do
     ],
     string: true, 
     unique_username: true
+
   validates :email,
     presence: [message: "can't be empty"],
     format: [
@@ -36,13 +39,16 @@ defmodule Conduit.Accounts.Commands.RegisterUser do
     ],
     string: true,
     unique_email: true
-  validates :pass_hash, presence: [message: "can't be empty"], string: true
+
+  validates :hashed_password, 
+    presence: [message: "can't be empty"], 
+    string: true
 
   @doc """
   Assign a unique identity for the user
   """
   def assign_uuid(%RegisterUser{} = register_user, uuid) do
-    %RegisterUser{register_user | uuid: uuid}
+    %RegisterUser{register_user | user_uuid: uuid}
   end
 
   @doc """
@@ -62,10 +68,10 @@ defmodule Conduit.Accounts.Commands.RegisterUser do
   @doc """
   Hash the password, clear the original password
   """
-  def hash_pass(%RegisterUser{pass: pass} = register_user) do
+  def hash_password(%RegisterUser{password: password} = register_user) do
     %RegisterUser{register_user |
-      pass: nil,
-      pass_hash: Auth.hash_password(pass)
+      password: nil,
+      hashed_password: Auth.hash_password(password)
     }
   end
 end

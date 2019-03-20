@@ -21,6 +21,8 @@ defmodule ConduitWeb.Router do
     get "/user", UserController, :current
     post "/users/login", SessionController, :create
     post "/users", UserController, :create
+
+    post "/articles", ArticleController, :create
   end
 
   scope "/", ConduitWeb do

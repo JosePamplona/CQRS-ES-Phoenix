@@ -6,7 +6,7 @@ defmodule ConduitWeb.SessionController do
 
   action_fallback ConduitWeb.FallbackController
 
-  def create(conn, %{"user" => %{"email" => email, "pass" => password}}) do
+  def create(conn, %{"user" => %{"email" => email, "password" => password}}) do
     with {:ok, %User{} = user} <- Auth.authenticate(email, password),
          {:ok, jwt} <- generate_jwt(user) do
        conn

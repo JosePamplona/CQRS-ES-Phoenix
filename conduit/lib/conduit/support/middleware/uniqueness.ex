@@ -31,6 +31,8 @@ defmodule Conduit.Support.Middleware.Uniqueness do
   def after_dispatch(pipeline), do: pipeline
   def after_failure(pipeline), do: pipeline
 
+  # ----------------------------------------------------------------------------
+
   defp ensure_uniqueness(command) do
     command
     |> UniqueFields.unique()
@@ -39,7 +41,9 @@ defmodule Conduit.Support.Middleware.Uniqueness do
 
       case Unique.claim(unique_field,  value) do
         :ok -> {:cont, :ok}
-        {:error, :already_taken} -> {:halt, {:error, Keyword.new([{unique_field, error_message}])}}
+
+        {:error, :already_taken} -> 
+          {:halt, {:error, Keyword.new([{unique_field, error_message}])}}
       end
     end)
   end

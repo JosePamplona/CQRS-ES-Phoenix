@@ -6,7 +6,7 @@ defmodule Conduit.Accounts.Projections.User do
   schema "accounts_users" do
     field :username, :string, unique: true
     field :email, :string, unique: true
-    field :pass_hash, :string
+    field :hashed_password, :string
     field :bio, :string
     field :image, :string
 

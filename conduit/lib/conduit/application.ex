@@ -12,10 +12,13 @@ defmodule Conduit.Application do
       Conduit.Repo,
       # Start the endpoint when the application starts
       ConduitWeb.Endpoint,
-      # Starts a worker by calling: Conduit.Worker.start_link(arg)
-      # {Conduit.Worker, arg},
+      
+      # Accounts supervisor
       Conduit.Accounts.Supervisor,
-      Conduit.Support.Unique # Worker
+      # Blog supervisor
+      Conduit.Blog.Supervisor,
+      # Enforce unique constraints (Worker)
+      Conduit.Support.Unique
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

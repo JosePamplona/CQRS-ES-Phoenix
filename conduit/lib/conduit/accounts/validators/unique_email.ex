@@ -10,6 +10,8 @@ defmodule Conduit.Accounts.Validators.UniqueEmail do
     ])
   end
 
+  # ----------------------------------------------------------------------------
+
   defp email_registered?(email) do
     case Accounts.user_by_email(email) do
       nil -> false

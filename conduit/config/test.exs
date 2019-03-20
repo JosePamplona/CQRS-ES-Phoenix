@@ -11,15 +11,6 @@ config :logger, level: :warn
 
 config :comeonin, :bcrypt_log_rounds, 4
 
-# Configure the event read database
-config :conduit, Conduit.Repo,
-  username: "postgres",
-  password: "pass",
-  database: "conduit_readstore_test",
-  hostname: "localhost",
-  port: "5432",
-  pool_size: 1
-
 # Configure the event store database
 config :eventstore, EventStore.Storage,
   serializer: Commanded.Serialization.JsonSerializer,
@@ -29,3 +20,14 @@ config :eventstore, EventStore.Storage,
   hostname: "localhost",
   port: "5432",
   pool_size: 1
+  
+# Configure the event read database
+config :conduit, Conduit.Repo,
+  username: "postgres",
+  password: "pass",
+  database: "conduit_readstore_test",
+  hostname: "localhost",
+  port: "5432",
+  pool_size: 1
+
+config :comeonin, :bcrypt_log_rounds, 4

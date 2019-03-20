@@ -3,7 +3,7 @@ defmodule Conduit.Accounts.Aggregates.User do
     :uuid,
     :username,
     :email,
-    :pass_hash
+    :hashed_password
   ]
 
   alias Conduit.Accounts.Aggregates.User
@@ -15,10 +15,10 @@ defmodule Conduit.Accounts.Aggregates.User do
   """
   def execute(%User{uuid: nil}, %RegisterUser{} = register) do
     %UserRegistered{
-      uuid: register.uuid,
+      user_uuid: register.user_uuid,
       username: register.username,
       email: register.email,
-      pass_hash: register.pass_hash
+      hashed_password: register.hashed_password
     }
   end
 
@@ -26,10 +26,10 @@ defmodule Conduit.Accounts.Aggregates.User do
 
   def apply(%User{} = user, %UserRegistered{} = registered) do
     %User{user |
-      uuid: registered.uuid,
+      uuid: registered.user_uuid,
       username: registered.username,
       email: registered.email,
-      pass_hash: registered.pass_hash
+      hashed_password: registered.hashed_password
     }
   end
 end

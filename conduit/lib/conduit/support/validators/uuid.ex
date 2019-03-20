@@ -9,6 +9,8 @@ defmodule Conduit.Support.Validators.Uuid do
     ])
   end
 
+  # ----------------------------------------------------------------------------
+
   defp valid_uuid?(uuid) do
     case UUID.info(uuid) do
       {:ok, _} -> true

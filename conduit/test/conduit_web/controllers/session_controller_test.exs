@@ -12,7 +12,7 @@ defmodule ConduitWeb.SessionControllerTest do
 
       conn = post conn, Routes.session_path(conn, :create), user: %{
         email: "jake@jake.jake",
-        pass: "jakejake"
+        password: "jakejake"
       }
       json = json_response(conn, 201)["user"]
       token = json["token"]
@@ -33,13 +33,11 @@ defmodule ConduitWeb.SessionControllerTest do
 
       conn = post conn, Routes.session_path(conn, :create), user: %{
         email: "jake@jake.jake",
-        pass: "invalidpassword"
+        password: "invalidpassword"
       }
 
       assert json_response(conn, 422)["errors"] == %{
-        "email or password" => [
-          "is invalid"
-        ]
+        "email or password" => ["is invalid"]
       }
     end
 
@@ -47,16 +45,16 @@ defmodule ConduitWeb.SessionControllerTest do
     test "does not create session and renders errors when user not found", %{conn: conn} do
       conn = post conn, Routes.session_path(conn, :create), user: %{
         email: "doesnotexist",
-        pass: "jakejake"
+        password: "jakejake"
       }
 
       assert json_response(conn, 422)["errors"] == %{
-        "email or password" => [
-          "is invalid"
-        ]
+        "email or password" => ["is invalid"]
       }
     end
   end
+
+  # ----------------------------------------------------------------------------
 
   defp register_user, do: fixture(:user)
 end

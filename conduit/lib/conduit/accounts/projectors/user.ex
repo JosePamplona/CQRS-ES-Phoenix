@@ -8,10 +8,10 @@ defmodule Conduit.Accounts.Projectors.User do
 
   project %UserRegistered{} = registered do
     Ecto.Multi.insert(multi, :user, %User{
-      uuid: registered.uuid,
+      uuid: registered.user_uuid,
       username: registered.username,
       email: registered.email,
-      pass_hash: registered.pass_hash,
+      hashed_password: registered.hashed_password,
       bio: nil,
       image: nil,
     })

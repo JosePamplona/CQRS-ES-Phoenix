@@ -1,4 +1,4 @@
-defmodule Conduit.Repo.Migrations.CreateAccountsUsers do
+defmodule Conduit.Repo.Migrations.CreateConduit.Accounts.User do
   use Ecto.Migration
 
   def change do
@@ -6,7 +6,7 @@ defmodule Conduit.Repo.Migrations.CreateAccountsUsers do
       add :uuid, :uuid, primary_key: true
       add :username, :string
       add :email, :string
-      add :pass_hash, :string
+      add :hashed_password, :string
       add :bio, :string
       add :image, :string
 

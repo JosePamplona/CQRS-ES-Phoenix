@@ -97,8 +97,7 @@ defmodule Conduit.AccountsTest do
     test "should hash password" do
       assert {:ok, %User{} = user} = Accounts.register_user(build(:user))
 
-      assert Auth.validate_password("jakejake", user.pass_hash)
+      assert Auth.validate_password("jakejake", user.hashed_password)
     end
-    
   end
 end

@@ -10,6 +10,8 @@ defmodule Conduit.Accounts.Validators.UniqueUsername do
     ])
   end
 
+  # ----------------------------------------------------------------------------
+
   defp username_registered?(username) do
     case Accounts.user_by_username(username) do
       nil -> false

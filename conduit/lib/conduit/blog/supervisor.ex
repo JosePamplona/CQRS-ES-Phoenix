@@ -1,15 +1,16 @@
-defmodule Conduit.Accounts.Supervisor do
+defmodule Conduit.Blog.Supervisor do
   use Supervisor
 
-  alias Conduit.Accounts
-  
+  alias Conduit.Blog
+
   def start_link(_arg) do
     Supervisor.start_link(__MODULE__, [], name: __MODULE__)
   end
 
   def init(_arg) do
     Supervisor.init([
-      Accounts.Projectors.User
+      Blog.Projectors.Article,
+      Blog.Workflows.CreateAuthorFromUser,
     ], strategy: :one_for_one)
   end
 end

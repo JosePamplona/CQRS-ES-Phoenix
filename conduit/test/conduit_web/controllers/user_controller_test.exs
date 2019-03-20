@@ -26,9 +26,7 @@ defmodule ConduitWeb.UserControllerTest do
     test "should not create user and render errors when data is invalid", %{conn: conn} do
       conn = post conn, Routes.user_path(conn, :create), user: build(:user, username: "")
       assert json_response(conn, 422)["errors"] == %{
-        "username" => [
-          "can't be empty"
-        ]
+        "username" => ["can't be empty"]
       }
     end
 
@@ -40,9 +38,7 @@ defmodule ConduitWeb.UserControllerTest do
       # attempt to register the same username
       conn = post conn, Routes.user_path(conn, :create), user: build(:user, email: "jake2@jake.jake")
       assert json_response(conn, 422)["errors"] == %{
-        "username" => [
-          "has already been taken",
-        ]
+        "username" => ["has already been taken"]
       }
     end
   end

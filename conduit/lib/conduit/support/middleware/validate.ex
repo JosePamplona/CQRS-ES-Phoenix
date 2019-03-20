@@ -14,6 +14,8 @@ defmodule Conduit.Support.Middleware.Validate do
   def after_dispatch(pipeline), do: pipeline
   def after_failure(pipeline), do: pipeline
 
+  # ----------------------------------------------------------------------------
+
   defp failed_validation(%Pipeline{command: command} = pipeline) do
     errors = command |> Vex.errors() |> merge_errors()
 
