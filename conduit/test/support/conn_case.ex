@@ -21,6 +21,7 @@ defmodule ConduitWeb.ConnCase do
       use Phoenix.ConnTest
       import Conduit.Factory
       import Conduit.Fixture
+      import ConduitWeb.ConnHelpers
       alias ConduitWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing

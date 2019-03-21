@@ -60,7 +60,8 @@ defmodule Conduit.MixProject do
       {:vex, "~> 0.6"},
       {:bcrypt_elixir, "~> 1.0"},
       {:comeonin, "~> 4.0"},
-      {:guardian, "~> 0.14"}
+      {:guardian, "~> 0.14"},
+      {:slugger, "~> 0.2"}
     ]
   end
 
