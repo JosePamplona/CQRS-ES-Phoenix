@@ -9,7 +9,7 @@ defmodule Conduit.Repo.Migrations.CreateConduit.Blog.Author do
       add :bio, :string
       add :image, :string
 
-      timestamps()
+      timestamps(type: :naive_datetime_usec)
     end
 
     create unique_index(:blog_authors, [:user_uuid])

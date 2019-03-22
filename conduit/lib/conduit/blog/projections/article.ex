@@ -2,6 +2,7 @@ defmodule Conduit.Blog.Projections.Article do
   use Ecto.Schema
 
   @primary_key {:uuid, :binary_id, autogenerate: false}
+  @timestamps_opts [type: :naive_datetime_usec]
 
   schema "blog_articles" do
     field :slug, :string
@@ -10,7 +11,7 @@ defmodule Conduit.Blog.Projections.Article do
     field :body, :string
     field :tags, {:array, :string}
     field :favorite_count, :integer, default: 0
-    field :published_at, :naive_datetime
+    field :published_at, :naive_datetime_usec
     field :author_uuid, :binary_id
     field :author_bio, :string
     field :author_image, :string

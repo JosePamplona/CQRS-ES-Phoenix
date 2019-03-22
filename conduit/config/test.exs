@@ -14,6 +14,7 @@ config :comeonin, :bcrypt_log_rounds, 4
 # Configure the event store database
 config :eventstore, EventStore.Storage,
   serializer: Commanded.Serialization.JsonSerializer,
+  migration_timestamps: [type: :naive_datetime_usec],
   username: "postgres",
   password: "pass",
   database: "conduit_eventstore_test",
@@ -23,6 +24,7 @@ config :eventstore, EventStore.Storage,
   
 # Configure the event read database
 config :conduit, Conduit.Repo,
+  migration_timestamps: [type: :naive_datetime_usec],
   username: "postgres",
   password: "pass",
   database: "conduit_readstore_test",

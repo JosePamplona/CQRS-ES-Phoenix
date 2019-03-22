@@ -66,9 +66,10 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
-
+  
 # Configure the event read database
 config :conduit, Conduit.Repo,
+  migration_timestamps: [type: :naive_datetime_usec],
   username: "postgres",
   password: "pass",
   database: "conduit_readstore_dev",
@@ -79,6 +80,7 @@ config :conduit, Conduit.Repo,
 # Configure the event store database
 config :eventstore, EventStore.Storage,
   serializer: Commanded.Serialization.JsonSerializer,
+  migration_timestamps: [type: :naive_datetime_usec],
   username: "postgres",
   password: "pass",
   database: "conduit_eventstore_dev",

@@ -31,7 +31,7 @@ defmodule Conduit.Blog.Projectors.Article do
         body: published.body,
         tags: published.tags,
         favorite_count: 0,
-        published_at: NaiveDateTime.truncate(published_at, :second),
+        published_at: published_at,
         author_uuid: author.uuid,
         author_username: author.username,
         author_bio: author.bio,

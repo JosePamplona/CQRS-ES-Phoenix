@@ -10,13 +10,13 @@ defmodule Conduit.Repo.Migrations.CreateConduit.Blog.Article do
       add :body, :text
       add :tags, {:array, :text}
       add :favorite_count, :integer
-      add :published_at, :naive_datetime
+      add :published_at, :naive_datetime_usec
       add :author_uuid, :uuid
       add :author_username, :text
       add :author_bio, :text
       add :author_image, :text
 
-      timestamps()
+      timestamps(type: :naive_datetime_usec)
     end
 
     create unique_index(:blog_articles, [:slug])
