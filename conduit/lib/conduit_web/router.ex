@@ -23,6 +23,7 @@ defmodule ConduitWeb.Router do
     post "/users", UserController, :create
     get "/articles", ArticleController, :index
     post "/articles", ArticleController, :create
+    get "/articles/:slug", ArticleController, :show
   end
 
   scope "/", ConduitWeb do

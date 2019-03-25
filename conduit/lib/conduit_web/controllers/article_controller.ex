@@ -26,4 +26,9 @@ defmodule ConduitWeb.ArticleController do
       |> render("show.json", article: article)
     end
   end
+
+  def show(conn, %{"slug" => slug}, _user, _claims) do
+    article = Blog.article_by_slug!(slug)
+    render(conn, "show.json", article: article)
+  end
 end
