@@ -10,7 +10,7 @@ defmodule Conduit.Repo.Migrations.CreateConduit.Accounts.User do
       add :bio, :string
       add :image, :string
 
-      timestamps(type: :naive_datetime_usec)
+      timestamps()
     end
 
     create unique_index(:accounts_users, [:username])

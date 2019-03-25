@@ -16,7 +16,7 @@ defmodule Conduit.Repo.Migrations.CreateConduit.Blog.Article do
       add :author_bio, :text
       add :author_image, :text
 
-      timestamps(type: :naive_datetime_usec)
+      timestamps()
     end
 
     create unique_index(:blog_articles, [:slug])
