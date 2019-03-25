@@ -23,5 +23,6 @@ defmodule Conduit.Repo.Migrations.CreateConduit.Blog.Article do
     create index(:blog_articles, [:author_uuid])
     create index(:blog_articles, [:author_username])
     create index(:blog_articles, [:published_at])
+    create index(:blog_articles, [:tags], using: "GIN")
   end
 end

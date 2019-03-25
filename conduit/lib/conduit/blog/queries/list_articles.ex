@@ -6,6 +6,7 @@ defmodule Conduit.Blog.Queries.ListArticles do
   defmodule Options do
     defstruct [
       author: nil,
+      tag: nil,
       limit: 20,
       offset: 0
     ]
@@ -28,6 +29,7 @@ defmodule Conduit.Blog.Queries.ListArticles do
   defp query(options) do
     from(a in Article)
     |> filter_by_author(options)
+    |> filter_by_tag(options)
   end
 
   defp entries(query, %Options{limit: limit, offset: offset}) do
@@ -44,5 +46,11 @@ defmodule Conduit.Blog.Queries.ListArticles do
   defp filter_by_author(query, %Options{author: nil}), do: query
   defp filter_by_author(query, %Options{author: author}) do
     query |> where(author_username: ^author)
+  end
+
+  defp filter_by_tag(query, %Options{tag: nil}), do: query
+  defp filter_by_tag(query, %Options{tag: tag}) do
+    from a in query,
+    where: fragment("? @> ?", a.tags, [^tag])
   end
 end
